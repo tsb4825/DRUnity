@@ -311,6 +311,7 @@
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/DoorScript.cs"
 "Assets/Scripts/Interactable.cs"
+"Assets/Scripts/LightScript.cs"
 "Assets/Scripts/PlayerScript.cs"
 "Assets/Scripts/WorldInteractionScript.cs"
 -langversion:8.0
