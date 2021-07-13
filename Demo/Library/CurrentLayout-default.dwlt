@@ -395,23 +395,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e8e8ffff
-      m_LastClickedID: -5912
-      m_ExpandedIDs: ece8ffff28fbffff54fbffffe2480000
+      m_SelectedIDs: ba100000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 6499ffff8a99ffff54fbffff38480000e0480000f2490000424a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: FrontDoorCopy (1)
-        m_OriginalName: FrontDoorCopy (1)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -5908
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -458,9 +458,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.084976554, y: 1.4739972, z: 0.20384914}
+    m_Target: {x: -28.855366, y: -14.749603, z: -0.56834096}
     speed: 2
-    m_Value: {x: 0.084976554, y: 1.4739972, z: 0.20384914}
+    m_Value: {x: -28.855366, y: -14.749603, z: -0.56834096}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -507,13 +507,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.15400417, y: -0.781912, z: 0.2128232, w: 0.56540537}
+    m_Target: {x: 0.18771446, y: -0.6922701, z: 0.19397351, w: 0.66932255}
     speed: 2
-    m_Value: {x: 0.15399797, y: -0.7818805, z: 0.21281463, w: 0.5653826}
+    m_Value: {x: 0.18770573, y: -0.6922379, z: 0.1939645, w: 0.66929144}
   m_Size:
-    m_Target: 1.3342068
+    m_Target: 18.46569
     speed: 2
-    m_Value: 1.3342068
+    m_Value: 18.46569
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -577,21 +577,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Audio
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Audio
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Git\DRUnity\Demo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f24a0000
-    m_LastClickedID: 19186
+    m_SelectedIDs: fa4a0000
+    m_LastClickedID: 19194
     m_ExpandedIDs: 00000000ea4a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
