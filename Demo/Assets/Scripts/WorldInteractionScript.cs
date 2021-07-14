@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class WorldInteractionScript : MonoBehaviour
 {
+    public float RotationSpeed;
+
+    private bool IsSunRotating;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +18,24 @@ public class WorldInteractionScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GetInteraction();
+        }
+
+        if (Input.GetKeyUp(KeyCode.F1))
+        {
+            IsSunRotating = true;
+        }
+
+        if (IsSunRotating)
+        {
+            var sun = GameObject.Find("Sun");
+
+            //sun.transform.Rotate(0, this.RotationSpeed * Time.deltaTime, 0);
+            sun.transform.eulerAngles = new Vector3(40, sun.transform.eulerAngles.y + (this.RotationSpeed * Time.deltaTime), 0);
+            if (sun.transform.eulerAngles.y >= 340)
+            {
+                sun.transform.eulerAngles = new Vector3(40, 340, 0);
+                IsSunRotating = false;
+            }
         }
     }
 

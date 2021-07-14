@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class LightScript : Interactable
 {
+    private int MaxIntensity = 280;
+    private float IntensityChange = .5f;
+    private float CurrentIntensity;
+
+    private bool IsTurningOnLights;
+    private bool IsTurningOffLights;
+
     private AudioSource LightOn;
     private AudioSource LightHum;
     private AudioSource LightOff;
@@ -27,11 +34,41 @@ public class LightScript : Interactable
         {
             LightHum.Play();
         }
+
+        if (this.IsTurningOnLights)
+        {
+            CurrentIntensity += IntensityChange;
+            if (CurrentIntensity >= MaxIntensity)
+            {
+                CurrentIntensity = MaxIntensity;
+                this.IsTurningOnLights = false;
+            }
+        }
+
+        if (this.IsTurningOffLights)
+        {
+            CurrentIntensity -= IntensityChange;
+            if (CurrentIntensity <= 0)
+            {
+                CurrentIntensity = 0;
+                this.IsTurningOffLights = false;
+            }
+        }
+
+        if (this.IsTurningOnLights || this.IsTurningOffLights)
+        {
+            List<Light> lights = new List<Light>();
+            lights.AddRange(transform.GetComponentsInChildren<Light>());
+            foreach (var light in lights)
+            {
+                light.intensity = CurrentIntensity;
+            }
+        }
     }
 
     public override void Interact()
     {
-        if (IsLightOn)
+        if (IsLightOn && !IsTurningOffLights && !IsTurningOnLights)
         {
             IsLightOn = false;
             LightHum.Stop();
@@ -40,10 +77,10 @@ public class LightScript : Interactable
             lights.AddRange(transform.GetComponentsInChildren<Light>());
             foreach(var light in lights)
             {
-                light.enabled = false;
+                IsTurningOffLights = true;
             }
         }
-        else
+        else if (!IsTurningOffLights && !IsTurningOnLights)
         {
             IsLightOn = true;
             LightOn.Play();
@@ -51,7 +88,7 @@ public class LightScript : Interactable
             lights.AddRange(transform.GetComponentsInChildren<Light>());
             foreach (var light in lights)
             {
-                light.enabled = true;
+                IsTurningOnLights = true;
             }
         }
     }
