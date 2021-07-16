@@ -3649,7 +3649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 50
-  NightMaterial: {fileID: 0}
+  NightMaterial: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
   DayMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &582915811
 Transform:
