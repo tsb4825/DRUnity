@@ -9,11 +9,8 @@ public class WorldInteractionScript : MonoBehaviour
 
     private bool IsSunRotating;
     private bool IsSunSetting = true;
-<<<<<<< HEAD
+
     private Vector3 SunRotation = new Vector3(40, 130, 0);
-=======
-    private Vector3 SunRotation = new Vector3(40,130,0);
->>>>>>> 93d3ebd3357e48fd194fb4d4a31984bbd159432b
 
     // Start is called before the first frame update
     void Start()
