@@ -1,15 +1,20 @@
 using UnityEngine;
+using System;
 
 public class WorldInteractionScript : MonoBehaviour
 {
     public float RotationSpeed;
+    public Material NightMaterial;
+    public Material DayMaterial;
 
     private bool IsSunRotating;
+    private bool IsSunSetting = true;
+    private Vector3 SunRotation = new Vector3(40, 130, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,19 +27,46 @@ public class WorldInteractionScript : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F1))
         {
+            if (!IsSunRotating && !IsSunSetting)
+            {
+                RenderSettings.skybox = DayMaterial;
+                var sun = GameObject.Find("Sun");
+                SunRotation = new Vector3(0, 130, 0);
+                sun.transform.eulerAngles = SunRotation;
+                sun.transform.GetComponent<Light>().intensity = 1.2f;
+            }
+
             IsSunRotating = true;
         }
 
         if (IsSunRotating)
         {
-            var sun = GameObject.Find("Sun");
-
-            //sun.transform.Rotate(0, this.RotationSpeed * Time.deltaTime, 0);
-            sun.transform.eulerAngles = new Vector3(40, sun.transform.eulerAngles.y + (this.RotationSpeed * Time.deltaTime), 0);
-            if (sun.transform.eulerAngles.y >= 340)
+            if (IsSunSetting)
             {
-                sun.transform.eulerAngles = new Vector3(40, 340, 0);
-                IsSunRotating = false;
+                var sun = GameObject.Find("Sun");
+
+                SunRotation.x += this.RotationSpeed * Time.deltaTime;
+                sun.transform.eulerAngles = SunRotation;
+                if (SunRotation.x >= 200)
+                {
+                    IsSunRotating = false;
+                    IsSunSetting = false;
+                    sun.transform.GetComponent<Light>().intensity = .5f;
+                    RenderSettings.skybox = NightMaterial;
+                    sun.transform.eulerAngles = new Vector3(90, 130, 0);
+                }
+            }
+            else
+            {
+                var sun = GameObject.Find("Sun");
+                SunRotation.x += this.RotationSpeed * Time.deltaTime;
+                sun.transform.eulerAngles = SunRotation;
+                if (SunRotation.x >= 40)
+                {
+                    IsSunRotating = false;
+                    IsSunSetting = true;
+                    sun.transform.eulerAngles = new Vector3(40, 130, 0);
+                }
             }
         }
     }
