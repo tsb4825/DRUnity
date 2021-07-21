@@ -3516,6 +3516,25 @@ RectTransform:
   m_AnchoredPosition: {x: 678, y: 294.5}
   m_SizeDelta: {x: 1356, y: 589}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &474157060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76d630a7412272b4281a7312890eb314,
+    type: 3}
+  m_PrefabInstance: {fileID: 2021004913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &474157061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474157060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019999998, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: -0.0000000018626451, y: 0, z: -0.000000001877197}
 --- !u!4 &476072862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76d630a7412272b4281a7312890eb314,
@@ -5384,6 +5403,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76d630a7412272b4281a7312890eb314, type: 3}
+--- !u!1 &877554417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76d630a7412272b4281a7312890eb314,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954050967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &877554418
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877554417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019999998, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: 0, y: 0, z: -0.000000001877197}
 --- !u!4 &901390313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76d630a7412272b4281a7312890eb314,
@@ -13201,6 +13239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1496f2f990f1bd34783616e49ded52a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shell: {fileID: 4721147932855169357, guid: db0196679b293c942adeeab86e38d091, type: 3}
+  _shellTimeToLive: 2
 --- !u!4 &4331299261016050156
 Transform:
   m_ObjectHideFlags: 0
@@ -13312,7 +13352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331299261015758300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 6}
+  m_LocalPosition: {x: 1.437, y: 1, z: 5.605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4331299261016050170}

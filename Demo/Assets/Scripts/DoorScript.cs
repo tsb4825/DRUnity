@@ -61,21 +61,21 @@ public class DoorScript : Interactable
 
     public override void Interact()
     {
-        //if (!this.ShouldRotate)
-        //{
-        //    this.ShouldRotate = true;
-        //    if (this.IsClosed)
-        //    {
-        //        this.DoorOpen.Play();
-        //    }
-        //}
+        if (!this.ShouldRotate)
+        {
+            this.ShouldRotate = true;
+            if (this.IsClosed)
+            {
+                this.DoorOpen.Play();
+            }
+        }
         //var lamp = GameObject.Find("StreetLamp");
         //lamp.GetComponent<LightScript>().Interact();
 
         //var enemy = GameObject.Find("Enemy");
         //enemy.GetComponent<EnemyScript>().Interact();
 
-        var enemy = GameObject.Find("45 S&W");
-        enemy.GetComponent<GunScript>().Interact();
+        //var enemy = GameObject.Find("45 S&W");
+        //enemy.GetComponent<GunScript>().Interact();
     }
 }
