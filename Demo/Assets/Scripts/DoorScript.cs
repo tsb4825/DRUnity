@@ -72,7 +72,10 @@ public class DoorScript : Interactable
         //var lamp = GameObject.Find("StreetLamp");
         //lamp.GetComponent<LightScript>().Interact();
 
-        var enemy = GameObject.Find("Enemy");
-        enemy.GetComponent<EnemyScript>().Interact();
+        //var enemy = GameObject.Find("Enemy");
+        //enemy.GetComponent<EnemyScript>().Interact();
+
+        var enemy = GameObject.Find("45 S&W");
+        enemy.GetComponent<GunScript>().Interact();
     }
 }

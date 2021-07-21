@@ -311,6 +311,7 @@
 -r:"Library/Bee/artifacts/500b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/DoorScript.cs"
 "Assets/Scripts/EnemyScript.cs"
+"Assets/Scripts/GunScript.cs"
 "Assets/Scripts/Interactable.cs"
 "Assets/Scripts/LightScript.cs"
 "Assets/Scripts/PlayerScript.cs"

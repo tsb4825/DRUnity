@@ -21,7 +21,7 @@ public class WorldInteractionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             GetInteraction();
         }
@@ -74,7 +74,7 @@ public class WorldInteractionScript : MonoBehaviour
 
     void GetInteraction()
     {
-        Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray interactionRay = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit interactionInfo;
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {

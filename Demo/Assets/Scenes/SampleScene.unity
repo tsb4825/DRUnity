@@ -13040,7 +13040,7 @@ Animator:
   m_GameObject: {fileID: 4331299261015758300}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5d06c8e481e9c63409f7653006d9e396, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e583f38270b9e14a90402d0392f1d0a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13181,13 +13181,26 @@ GameObject:
   m_Component:
   - component: {fileID: 4331299261016050172}
   - component: {fileID: 4331299261008373276}
+  - component: {fileID: 4331299261015758301}
   m_Layer: 0
-  m_Name: 45 ACP Smith and Wesson Gun
-  m_TagString: Untagged
+  m_Name: 45 S&W
+  m_TagString: Interactable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4331299261015758301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331299261015758300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1496f2f990f1bd34783616e49ded52a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4331299261016050156
 Transform:
   m_ObjectHideFlags: 0

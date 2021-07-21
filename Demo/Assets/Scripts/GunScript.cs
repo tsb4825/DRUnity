@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : Interactable
+public class GunScript : Interactable
 {
-    private bool IsJumping;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +18,6 @@ public class EnemyScript : Interactable
 
     public override void Interact()
     {
-        transform.GetComponent<Animator>().SetTrigger("Jump");
+        transform.GetComponent<Animator>().SetTrigger("Fire");
     }
 }
