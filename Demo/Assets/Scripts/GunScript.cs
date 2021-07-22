@@ -5,9 +5,13 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public Transform _shell;
+    public Transform _bullet;
     public float _shellTimeToLive;
+    public AudioSource GunShot;
 
-    private float _relativeYPositionOfGun = .0592f;
+    private float _relativeYPositionOfGunShell = .0592f;
+    private float _relativeYPositionOfGunBullet = .637f;
+    private float _bulletThrust = 10000f;
     private float _shellThrust = 50f;
 
     // Start is called before the first frame update
@@ -19,20 +23,24 @@ public class GunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        var animator = transform.GetComponent<Animator>();
+        if (Input.GetMouseButtonDown(0) && !animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         {
-            transform.GetComponent<Animator>().SetTrigger("Fire");
-            // play sound
+            animator.SetTrigger("Fire");
+            GunShot.Play();
             SpawnShellWithVelocity();
-            LaunchBullet();
+            //LaunchBullet();
         }
     }
 
     void SpawnShellWithVelocity()
     {
-        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + _relativeYPositionOfGun, transform.position.z);
+        var localOffset = new Vector3(0, _relativeYPositionOfGunShell, 0);
+        var worldOffset = transform.rotation * localOffset;
+        var spawnPosition = transform.position + worldOffset;
         var shell = Instantiate(_shell, spawnPosition, transform.rotation);
-        shell.GetComponent<Rigidbody>().AddForce(0, _shellThrust * Random.Range(1, 1.8f), _shellThrust * Random.Range(1, 1.8f));
+        shell.GetComponent<Rigidbody>().AddRelativeForce(transform.up * _shellThrust * Random.Range(1, 1.8f));
+        shell.GetComponent<Rigidbody>().AddRelativeForce(transform.right * _shellThrust * Random.Range(1, 1.8f));
         StartCoroutine(DestroyShell(shell));
     }
 
@@ -44,6 +52,11 @@ public class GunScript : MonoBehaviour
 
     void LaunchBullet()
     {
-
+        var localOffset = new Vector3(0, _relativeYPositionOfGunShell, 0);
+        var worldOffset = transform.rotation * localOffset;
+        var spawnPosition = transform.position + (transform.forward * _relativeYPositionOfGunBullet);
+        var bullet = Instantiate(_bullet, spawnPosition, transform.rotation);
+        //bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.up * _shellThrust);
+        //StartCoroutine(DestroyShell(bullet));
     }
 }
