@@ -10,14 +10,14 @@ public class GunScript : MonoBehaviour
     public AudioSource GunShot;
 
     private float _relativeYPositionOfGunShell = .0592f;
-    private float _relativeYPositionOfGunBullet = .637f;
-    private float _bulletThrust = 10000f;
+    private Vector3 _relativeBulletPosition = new Vector3(-0.008349f, 0.051924f, -.63695f);
+    private float _bulletThrust = 1000f;
     private float _shellThrust = 50f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class GunScript : MonoBehaviour
             animator.SetTrigger("Fire");
             GunShot.Play();
             SpawnShellWithVelocity();
-            //LaunchBullet();
+            LaunchBullet();
         }
     }
 
@@ -52,11 +52,8 @@ public class GunScript : MonoBehaviour
 
     void LaunchBullet()
     {
-        var localOffset = new Vector3(0, _relativeYPositionOfGunShell, 0);
-        var worldOffset = transform.rotation * localOffset;
-        var spawnPosition = transform.position + (transform.forward * _relativeYPositionOfGunBullet);
-        var bullet = Instantiate(_bullet, spawnPosition, transform.rotation);
-        //bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.up * _shellThrust);
-        //StartCoroutine(DestroyShell(bullet));
+        var bullet = Instantiate(_bullet, transform.position + _relativeBulletPosition, transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * _bulletThrust);
+        StartCoroutine(DestroyShell(bullet));
     }
 }
