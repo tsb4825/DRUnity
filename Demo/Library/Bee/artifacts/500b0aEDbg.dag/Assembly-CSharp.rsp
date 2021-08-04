@@ -309,11 +309,14 @@
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/BulletScript.cs"
 "Assets/Scripts/DoorScript.cs"
 "Assets/Scripts/EnemyScript.cs"
+"Assets/Scripts/GunScript.cs"
 "Assets/Scripts/Interactable.cs"
 "Assets/Scripts/LightScript.cs"
 "Assets/Scripts/PlayerScript.cs"
+"Assets/Scripts/ShellScript.cs"
 "Assets/Scripts/WorldInteractionScript.cs"
 -langversion:8.0
 
