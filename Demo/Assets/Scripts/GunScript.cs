@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class GunScript : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class GunScript : MonoBehaviour
     public AudioSource GunShot;
 
     private float _relativeYPositionOfGunShell = .0592f;
-    private Vector3 _relativeBulletPosition = new Vector3(-0.008349f, 0.051924f, -.63695f);
+    private Vector3 _relativeBulletPosition = new Vector3(0, .0592f, 0);
     private float _bulletThrust = 1000f;
     private float _shellThrust = 50f;
     private float _refireTime = 1.2f;
@@ -34,7 +36,7 @@ public class GunScript : MonoBehaviour
             animator.SetTrigger("Fire");
             GunShot.Play();
             SpawnShellWithVelocity();
-            LaunchBullet();
+            SpawnBulletWithVelocity();
         }
 
         if (!_canFire)
@@ -49,14 +51,11 @@ public class GunScript : MonoBehaviour
 
     void SpawnShellWithVelocity()
     {
-        //var localOffset = new Vector3(0, _relativeYPositionOfGunShell, 0);
-        //var worldOffset = transform.rotation * localOffset;
-        //var spawnPosition = transform.position + worldOffset;
-        //var shell = Instantiate(_shell, spawnPosition, transform.rotation);
-        var shell = Instantiate(_shell, transform.position, transform.rotation);
+        var shell = Instantiate(_shell, new Vector3(transform.position.x, transform.position.y + _relativeYPositionOfGunShell, transform.position.z), transform.rotation);
         shell.GetComponent<Rigidbody>().AddRelativeForce(transform.up * _shellThrust * Random.Range(1, 1.8f));
-        shell.GetComponent<Rigidbody>().AddRelativeForce(transform.right * _shellThrust * Random.Range(1, 1.8f));
-        //StartCoroutine(DestroyObject(shell));
+        Vector3 rightForce = Vector3.forward * _shellThrust * Random.Range(1, 1.8f);
+        shell.GetComponent<Rigidbody>().AddRelativeForce(rightForce);
+        StartCoroutine(DestroyObject(shell));
     }
 
     IEnumerator DestroyObject(Transform shell)
@@ -65,10 +64,12 @@ public class GunScript : MonoBehaviour
         Destroy(shell.gameObject);
     }
 
-    void LaunchBullet()
+    void SpawnBulletWithVelocity()
     {
-        var bullet = Instantiate(_bullet, transform.position + _relativeBulletPosition, transform.rotation);
-        bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * _bulletThrust);
-        //StartCoroutine(DestroyObject(bullet));
+        var bulletPosition = new Vector3(transform.position.x + _relativeBulletPosition.x, transform.position.y + _relativeBulletPosition.y, transform.position.z + _relativeBulletPosition.z);
+        bulletPosition = bulletPosition + (transform.right * -1 *.65f);
+        var bullet = Instantiate(_bullet, bulletPosition, transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * -1 * _bulletThrust);
+        StartCoroutine(DestroyObject(bullet));
     }
 }

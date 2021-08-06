@@ -50,13 +50,15 @@ public class PlayerScript : MonoBehaviour
         float rotateHorizontal = Input.GetAxis("Mouse X");
         transform.Rotate(transform.up * rotateHorizontal * LookSensitivity);
 
-        //float rotateVertical = Input.GetAxis("Mouse Y");
-        //if (rotateVertical != 0)
-        //{
-        //    var playerCamera = GameObject.Find("Player Camera");
-        //    //transform.Rotate(transform.right * rotateVertical * LookSensitivity);
-        //    playerCamera.transform.Rotate(transform.right * rotateVertical * LookSensitivity);
-        //}
+        float rotateVertical = Input.GetAxis("Mouse Y");
+        var playerCamera = GameObject.Find("Main Camera");
+        var gun = GameObject.Find("45Gun");
+        Vector3 localX = transform.TransformDirection(Vector3.right);
+        //playerCamera.transform.Rotate(transform.right * rotateVertical * LookSensitivity);
+        //gun.transform.Rotate(transform.right * rotateVertical * LookSensitivity);
+
+        playerCamera.transform.RotateAround(playerCamera.transform.position, localX, rotateVertical * LookSensitivity);
+        gun.transform.RotateAround(gun.transform.position, localX, rotateVertical * LookSensitivity);
     }
 }
 
