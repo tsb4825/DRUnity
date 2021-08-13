@@ -317,6 +317,8 @@
 "Assets/Scripts/LightScript.cs"
 "Assets/Scripts/PlayerScript.cs"
 "Assets/Scripts/ShellScript.cs"
+"Assets/Scripts/SmokeGrenadeScript.cs"
+"Assets/Scripts/Weapon.cs"
 "Assets/Scripts/WorldInteractionScript.cs"
 -langversion:8.0
 

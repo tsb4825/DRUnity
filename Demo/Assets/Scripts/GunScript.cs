@@ -4,12 +4,12 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class GunScript : MonoBehaviour
+public class GunScript : Weapon
 {
     public Transform _shell;
     public Transform _bullet;
     public float _shellTimeToLive;
-    public AudioSource GunShot;
+    private AudioSource _gunShot;
 
     private float _relativeYPositionOfGunShell = .0592f;
     private Vector3 _relativeBulletPosition = new Vector3(0, .0592f, 0);
@@ -17,28 +17,23 @@ public class GunScript : MonoBehaviour
     private float _shellThrust = 50f;
     private float _refireTime = 1.2f;
     private float _currentRefireTime = 0;
-    private bool _canFire = true;
+    public bool _canFire = true;
+
+    void Awake()
+    {
+        _canFire = true;
+        _gunShot = transform.GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        var animator = transform.GetComponent<Animator>();
-        if (Input.GetMouseButtonDown(0) && _canFire)
-        {
-            _currentRefireTime = 0;
-            _canFire = false;
-            animator.SetTrigger("Fire");
-            GunShot.Play();
-            SpawnShellWithVelocity();
-            SpawnBulletWithVelocity();
-        }
-
         if (!_canFire)
         {
             _currentRefireTime += Time.deltaTime;
@@ -71,5 +66,21 @@ public class GunScript : MonoBehaviour
         var bullet = Instantiate(_bullet, bulletPosition, transform.rotation);
         bullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * -1 * _bulletThrust);
         StartCoroutine(DestroyObject(bullet));
+    }
+
+    public override bool Fire()
+    {
+        var animator = transform.GetComponent<Animator>(); 
+        if (_canFire)
+        {
+            _currentRefireTime = 0;
+            _canFire = false;
+            animator.SetTrigger("Fire");
+            _gunShot.Play();
+            SpawnShellWithVelocity();
+            SpawnBulletWithVelocity();
+        }
+
+        return false;
     }
 }
