@@ -81,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         {
             _shouldRespawnWeapon = false;
             _canFire = true;
+            _currentRespawnWeaponTime = 0;
             _activeWeapon = SwapWeapon(Weapons.Skip(_currentWeaponIndex).First());
         }
         else if(_shouldRespawnWeapon)
