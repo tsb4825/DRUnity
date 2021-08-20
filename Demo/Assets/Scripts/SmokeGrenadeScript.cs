@@ -55,7 +55,7 @@ public class SmokeGrenadeScript : Weapon
         transform.parent = null;
         transform.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * -1 * ForceThrow);
         transform.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * ForceThrow);
-        transform.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(12f,0f,20f));
+        transform.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(12f, 0f, 20f));
         transform.GetComponent<Rigidbody>().useGravity = true;
 
         StartCoroutine(DestroyObject(transform));

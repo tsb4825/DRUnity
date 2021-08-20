@@ -16,7 +16,7 @@ public class GunScript : Weapon
     private float _bulletThrust = 1000f;
     private float _shellThrust = 50f;
     private float _refireTime = 1.2f;
-    private float _currentRefireTime = 0;
+    private float _currentRefireTime;
     public bool _canFire = true;
 
     void Awake()

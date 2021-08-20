@@ -75,6 +75,10 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _canFire)
         {
             _shouldRespawnWeapon = _activeWeapon.GetComponent<Weapon>().Fire();
+            if (_shouldRespawnWeapon)
+            {
+                _canFire = false;
+            }
         }
 
         if (_shouldRespawnWeapon && _currentRespawnWeaponTime > _allowRespawnWeaponTime)
