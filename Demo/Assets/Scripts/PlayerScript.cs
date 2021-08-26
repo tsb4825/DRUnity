@@ -21,14 +21,39 @@ public class PlayerScript : MonoBehaviour
     private bool _shouldRespawnWeapon;
     private bool _canFire = true;
 
+    private GameObject Weapon;
+    
+    public bool InMiniGame = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        Weapon = GameObject.Find("Weapon");
         _activeWeapon = SwapWeapon(Weapons.First());
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (!InMiniGame)
+        {
+            MovePlayer();
+            MoveCamera();
+            HandleWeapons();
+        }
+    }
+
+    public void HideWeapon()
+    {
+        Weapon.SetActive(false);
+    }
+
+    public void ShowWeapon()
+    {
+        Weapon.SetActive(true);
+    }
+
+    private void MovePlayer()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -58,7 +83,10 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position = transform.position + transform.right * Time.deltaTime * modifiedPlayerSpeed;
         }
+    }
 
+    private void MoveCamera()
+    {
         float rotateHorizontal = Input.GetAxis("Mouse X");
         transform.Rotate(transform.up * rotateHorizontal * LookSensitivity);
 
@@ -71,7 +99,10 @@ public class PlayerScript : MonoBehaviour
 
         playerCamera.transform.RotateAround(playerCamera.transform.position, localX, rotateVertical * LookSensitivity);
         weapon.transform.RotateAround(weapon.transform.position, localX, rotateVertical * LookSensitivity);
+    }
 
+    private void HandleWeapons()
+    {
         if (Input.GetMouseButtonDown(0) && _canFire)
         {
             _shouldRespawnWeapon = _activeWeapon.GetComponent<Weapon>().Fire();
@@ -88,7 +119,7 @@ public class PlayerScript : MonoBehaviour
             _currentRespawnWeaponTime = 0;
             _activeWeapon = SwapWeapon(Weapons.Skip(_currentWeaponIndex).First());
         }
-        else if(_shouldRespawnWeapon)
+        else if (_shouldRespawnWeapon)
         {
             _currentRespawnWeaponTime += Time.deltaTime;
         }
