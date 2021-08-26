@@ -326,6 +326,7 @@
 "Assets/Scripts/Interactable.cs"
 "Assets/Scripts/LightScript.cs"
 "Assets/Scripts/MiniGameStart.cs"
+"Assets/Scripts/OrcScript.cs"
 "Assets/Scripts/PlayerScript.cs"
 "Assets/Scripts/ShellScript.cs"
 "Assets/Scripts/SmokeGrenadeScript.cs"
