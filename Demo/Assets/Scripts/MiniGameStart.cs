@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGameStart : Interactable
 {
@@ -17,10 +18,13 @@ public class MiniGameStart : Interactable
 
     private bool _inMiniGame;
 
+    public Button StartButton;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        var startButton = StartButton.GetComponent<Button>();
+        startButton.onClick.AddListener(OnStartButtonClick);
     }
 
     // Update is called once per frame
@@ -58,6 +62,13 @@ public class MiniGameStart : Interactable
         {
             _transitioningFromMiniGame = true;
         }
+    }
+
+    void OnStartButtonClick()
+    {
+        //GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().StartGame();
+        StartButton.GetComponent<Button>().enabled = false;
+        StartButton.transform.localScale = new Vector3(0f,0f,0f);
     }
 
     public override void Interact()

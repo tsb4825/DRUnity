@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class OrcScript : MonoBehaviour
     public float GoldAwarded;
 
     private List<Vector3> _wayPoints;
+    private List<float> _rotations = new List<float>{0f, 55f, -70f, 0f};
     private int _currentWaypoint;
 
     // Start is called before the first frame update
@@ -17,25 +17,25 @@ public class OrcScript : MonoBehaviour
     {
         _wayPoints = new List<Vector3>
         {
-            GameObject.Find("Waypoint1").transform.position,
-            GameObject.Find("Waypoint2").transform.position,
-            GameObject.Find("Waypoint3").transform.position,
-            GameObject.Find("Waypoint4").transform.position,
-            GameObject.Find("Waypoint5").transform.position,
+            GameObject.Find("Waypoint1").transform.localPosition,
+            GameObject.Find("Waypoint2").transform.localPosition,
+            GameObject.Find("Waypoint3").transform.localPosition,
+            GameObject.Find("Waypoint4").transform.localPosition,
+            GameObject.Find("Waypoint5").transform.localPosition,
         };
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _wayPoints.Skip(_currentWaypoint).First(), WalkSpeed * Time.deltaTime);
-        if (transform.position == _wayPoints.Skip(_currentWaypoint).First())
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, _wayPoints.Skip(_currentWaypoint).First(), WalkSpeed * Time.deltaTime);
+        if (transform.localPosition == _wayPoints.Skip(_currentWaypoint).First())
         {
             _currentWaypoint += 1;
-            Vector3 direction = _wayPoints.Skip(_currentWaypoint).First() - transform.position;
+            Vector3 direction = Vector3.RotateTowards(transform.localPosition, _wayPoints.Skip(_currentWaypoint).First(), 999f,999f);
             Vector3 eulerRotation = transform.localEulerAngles;
-            transform.rotation = new Quaternion(Quaternion.Euler(direction).x, eulerRotation.y, eulerRotation.z, 0f);
-            Debug.Break();
+            eulerRotation.x = _rotations.Skip(_currentWaypoint - 1).First();
+            transform.localRotation = Quaternion.Euler(eulerRotation);
         }
     }
 
@@ -54,7 +54,9 @@ public class OrcScript : MonoBehaviour
 
         if (collider.gameObject.tag == "MinigameHome")
         {
+
             //GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().BaseHit();
+            Destroy(transform.gameObject);
         }
     }
 }
