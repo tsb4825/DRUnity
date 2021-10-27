@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable Object
-  - TowerSpot
   - MinigameHome
+  - MiniGameEnemy
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ public class OrcScript : MonoBehaviour
 {
     public float WalkSpeed;
     public float Hitpoints;
-    public float GoldAwarded;
+    public int GoldAwarded;
 
     private List<Vector3> _wayPoints;
     private List<float> _rotations = new List<float>{0f, 55f, -70f, 0f};
@@ -47,7 +47,7 @@ public class OrcScript : MonoBehaviour
             //Hitpoints -= damage;
             if (Hitpoints <= 0)
             {
-                //GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().AwardGold(GoldAwarded);
+                GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().KillEnemy(GoldAwarded);
                 Destroy(transform.gameObject);
             }
         }
@@ -55,7 +55,7 @@ public class OrcScript : MonoBehaviour
         if (collider.gameObject.tag == "MinigameHome")
         {
 
-            //GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().BaseHit();
+            GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().BaseHit();
             Destroy(transform.gameObject);
         }
     }

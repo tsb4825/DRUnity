@@ -31,9 +31,6 @@ public class MiniGameStart : Interactable
     void Update()
     {
         var player = GameObject.Find("Player");
-        var camera = GameObject.Find("Main Camera");
-        var game = GameObject.Find("MiniGameBoard");
-        var signPosition = GameObject.Find("MiniGameSign");
         if (_transitioningToMiniGame)
         {
             player.transform.position = Vector3.MoveTowards(player.transform.position, _inFrontOfGamePosition, TransitionSpeed * Time.deltaTime);
@@ -66,7 +63,7 @@ public class MiniGameStart : Interactable
 
     void OnStartButtonClick()
     {
-        //GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().StartGame();
+        GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().StartGame();
         StartButton.GetComponent<Button>().enabled = false;
         StartButton.transform.localScale = new Vector3(0f,0f,0f);
     }

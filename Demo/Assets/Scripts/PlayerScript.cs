@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
     public float LookSensitivity;
 
     private float modifiedPlayerSpeed;
-    //public List<Transform> Weapons;
     public List<Transform> Weapons;
     private Transform _activeWeapon;
     private bool _canSwapWeapons = true;

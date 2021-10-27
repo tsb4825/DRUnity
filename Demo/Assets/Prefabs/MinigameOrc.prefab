@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 2112943057480697264}
   m_Layer: 0
   m_Name: MinigameOrc
-  m_TagString: Untagged
+  m_TagString: MiniGameEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
