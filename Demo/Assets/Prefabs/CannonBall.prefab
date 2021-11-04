@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5390030193612374796}
   - component: {fileID: 5390030193612374795}
   - component: {fileID: 6092531170406203720}
+  - component: {fileID: 3250983564276272464}
   m_Layer: 0
   m_Name: CannonBall
-  m_TagString: Untagged
+  m_TagString: MinigameProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,3 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3250983564276272464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390030193612374793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ce396fbb2fe754181dcdc520ac1708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageHitAmount: 50

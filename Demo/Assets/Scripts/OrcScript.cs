@@ -43,8 +43,8 @@ public class OrcScript : MonoBehaviour
     {
         if (collider.gameObject.tag == "MinigameProjectile")
         {
-            //float damage = collider.GetComponent<MinigameProjectileScript>().DamageHitAmount;
-            //Hitpoints -= damage;
+            float damage = collider.GetComponent<MinigameProjectileScript>().DamageHitAmount;
+            Hitpoints -= damage;
             if (Hitpoints <= 0)
             {
                 GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().KillEnemy(GoldAwarded);
@@ -54,7 +54,6 @@ public class OrcScript : MonoBehaviour
 
         if (collider.gameObject.tag == "MinigameHome")
         {
-
             GameObject.Find("MiniGameBoard").GetComponent<MiniGameScript>().BaseHit();
             Destroy(transform.gameObject);
         }

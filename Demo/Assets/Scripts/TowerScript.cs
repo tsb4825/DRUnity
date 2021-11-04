@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class TowerScript : MonoBehaviour
     public Transform Projectile;
     public float RotationSpeed;
     public float ProjectileSpeed;
+    public float ProjectileToLive;
 
     public const float RotationEnemyThreshold = 5;
     private bool _canFire;
@@ -53,15 +55,25 @@ public class TowerScript : MonoBehaviour
     private void Fire()
     {
         var projectile = Instantiate(Projectile, transform.position, transform.rotation);
-        projectile.GetComponent<Rigidbody>().AddRelativeForce(this.transform.forward * ProjectileSpeed);
+        Vector3 direction = (_targets.First().transform.position - transform.position).normalized;
+        projectile.GetComponent<Rigidbody>().AddForce(direction * ProjectileSpeed);
         _canFire = false;
+        StartCoroutine(DestroyObject(projectile));
     }
+
+    IEnumerator DestroyObject(Transform gameObject)
+    {
+        yield return new WaitForSeconds(ProjectileToLive);
+        Destroy(gameObject.gameObject);
+    }
+
 
     private void RotateTowardTarget()
     {
         _isAimedAtTarget = false;
         Vector3 direction = (_targets.First().transform.position - transform.position).normalized;
         var lookRotation = Quaternion.LookRotation(direction).y;
+        // ToDo: figure out best way to rotate
         transform.localRotation = Quaternion.Slerp(transform.localRotation, new Quaternion(transform.localRotation.x, lookRotation, transform.localRotation.z, transform.localRotation.w),
             Time.deltaTime * RotationSpeed);
         if (lookRotation <= RotationEnemyThreshold)

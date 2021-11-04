@@ -6823,7 +6823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberOfLives: 3
   TimeToStart: 2
-  Gold: 30
+  Gold: 60
   TimeBetweenSpawns: 0.8
   EnemiesToSpawn: 12
   Orc: {fileID: 2112943057480697267, guid: 190da76e7b1980a4587feb5faacbe1a2, type: 3}

@@ -25,7 +25,6 @@ public class MiniGameScript : MonoBehaviour
     private GameObject _statusText;
 
     private bool _gameStarted;
-    private bool _allEnemiesSpawned;
     private bool _spawnEnemies;
     private float _currentSpawnTime;
     private bool _doneStarting;
@@ -162,7 +161,7 @@ public class MiniGameScript : MonoBehaviour
     {
         Gold += goldAwarded;
         _enemiesLeft -= 1;
-        if (_allEnemiesSpawned && _enemiesLeft <= 0)
+        if (EnemiesToSpawn <= 0 && _enemiesLeft <= 0)
         {
             YouWin();
         }
@@ -176,12 +175,13 @@ public class MiniGameScript : MonoBehaviour
     public void BaseHit()
     {
         NumberOfLives -= 1;
+        _enemiesLeft -= 1;
         if (!_isGameOver && NumberOfLives <= 0)
         {
             YouLose();
         }
 
-        if (!_isGameOver && NumberOfLives > 0 && _enemiesLeft <= 0 && _allEnemiesSpawned)
+        if (!_isGameOver && NumberOfLives > 0 && _enemiesLeft <= 0 && EnemiesToSpawn <= 0)
         {
             YouWin();
         }

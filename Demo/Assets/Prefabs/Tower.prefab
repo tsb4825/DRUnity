@@ -301,7 +301,8 @@ MonoBehaviour:
   Projectile: {fileID: 5390030193612374794, guid: c0da936b36ab05d47986e87be0ecdbba,
     type: 3}
   RotationSpeed: 100
-  ProjectileSpeed: 80
+  ProjectileSpeed: 150
+  ProjectileToLive: 2
 --- !u!54 &8942989675018846688
 Rigidbody:
   m_ObjectHideFlags: 0
